@@ -1,0 +1,498 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+* {
+    0) */ /* make transparent link selection, adjust last value opacity 0 to 1.0 */
+}
+
+
+
+body {
+                    /* prevent callout to copy image, etc when tap to hold */
+                 /* prevent webkit from resizing text to fit */
+                                      /* prevent copy paste, to allow, change 'none' to 'text' */
+                    width: 100%;
+                    height: 100%;
+                    margin-left: auto;
+                    margin-right: auto;
+                    overflow-y: hidden;
+                    background-color: #4e4e4e;
+    position: fixed;
+}
+
+/* Portrait layout (default) */
+.app {
+    position:absolute;             /* position in the center of the screen */
+    height: 95%;
+    width:100%;                   /* text area width */
+    overflow-y: hidden;
+    top:60px;
+    
+
+    /* offset vertical: half of image height and text area height */
+                                   /* offset horizontal: half of text area width */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #4e4e4e;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+/* Landscape layout (with min-width) */
+@media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {
+    .app {
+ /* offset vertical: half of image height */
+                                      /* offset horizontal: half of image width and text area width */
+    }
+}
+
+.classResults {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: #46580E;
+  width: 90%;
+  height: 85%;
+  border-radius: 8px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7), 0 0 8px rgba(255, 255, 255, 0.1), 0 -1px 30px rgba(0, 0, 0, .4), inset 0 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.classes {width: 100%;height:50px;list-style-type:none;vertical-align: middle;}
+.classesItem {
+   background: -webkit-linear-gradient(top, rgba(38,51,0,.0) 0%, rgba(38,51,0,.3) 50%, rgba(38,51,0,.0) 100%);
+   font-size: 20px;
+   color: white;
+   width: 95%;
+   height: 100%;
+   margin: 2px;
+   margin-left: -30px;
+   text-align: left;
+   vertical-align: middle;
+   border-radius: 10px;
+}
+.classsesItemText {
+   /* background-color: rgba(38,51,0,.5); */
+   font-size: 20px;
+   color: white;
+   width: 85%;
+   height: 100%;
+   display: inline-block;
+   text-align: left;
+   padding-left: 10px;
+   vertical-align: middle;
+}
+
+.classText {
+   block; */
+   text-align: left;
+   margin-top: 15px;
+   vertical-align: middle;
+   background-color: transparent;
+   border: none;
+   color: white;
+   font-size: 18px;
+   text-align: left;
+}
+.deleteItem{
+    background-color: rgba(255,0,0,1);
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    vertical-align: middle;
+    color: white;
+    text-align: center;
+    border: 2px white;
+    box-shadow: 0px 0px 6px rgba(0,0,0,.5);
+    display: inline-block;
+    right: 0;
+}
+
+.deleteItemButton{
+    height: 25px;
+    width: 25px;
+    background: rgba(255,0,0,0);
+    border: none;
+    color: white;
+    font-size: 32px;
+    margin-top: -8px;
+    margin-left: -24px;
+    text-align: center;
+
+}
+
+.event {
+    border-radius:4px;
+    -webkit-border-radius:4px;
+    color:#FFFFFF;
+    font-size:12px;
+    margin:0px 30px;
+    padding:2px 0px;
+}
+
+.event.listening {
+    background-color:#333333;
+    display:block;
+}
+
+.event.received {
+    background-color:#4B946A;
+    display:none;
+}
+
+@keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+@-webkit-keyframes fade {
+    from { opacity: 1.0; }
+    50% { opacity: 0.4; }
+    to { opacity: 1.0; }
+}
+
+.BottomBar {
+    width: 100%;
+    position: fixed;
+    bottom: 0%;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: inline-block;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 10px #000000;
+    /* background-blend-mode: overlay; */
+}
+
+.leftSide{
+  width:50%;
+  height: 100%;
+  position: fixed;
+  display: inline-block;
+  left: 0;
+}
+
+.rightSide{
+  width:50%;
+  height: 100%;
+  position: fixed;
+  display: inline-block;
+  right: 0;
+}
+
+.cameraButtonDiv{
+  width: 50%;
+  height:100%;
+  position: relative;
+  display: inline-block;
+  margin-right: -4px;
+  background: -webkit-linear-gradient(top, #AD3F1A 0%, #6c2811 10%);
+}
+.cameraButton {background: -webkit-linear-gradient(top, #AD3F1A 10%, #000000 20%);height: 100%;width: 100%;border: none;position: static;display: inline-block;background-image: url('../img/camera.png');background-size: 35px;background-repeat: no-repeat;background-position: 50% 7px;filter: invert(100%);}
+
+.photoButtonDiv{
+  width: 50%;
+  height:100%;
+  display: inline-block;
+  position: relative;
+  background: -webkit-linear-gradient(top, #AD3F1A 0%, #6c2811 10%);
+}
+.photoButton {background: -webkit-linear-gradient(top, #AD3F1A 10%, #000000 20%);height: 100%;width: 100%;border: none;position: static;display: inline-block;background-image: url('../img/photo.png');background-size: 35px;background-repeat: no-repeat;background-position: 50% 8px;filter: invert(100%);}
+.helpButtonDiv{
+  width: 50%;
+  height:100%;
+  position: static;
+  display: inline-block;
+  left: 0;
+  margin-right: -4px;
+  background: -webkit-linear-gradient(top, #AD3F1A 0%, #6c2811 10%);
+}
+.helpButton {background: -webkit-linear-gradient(top, #AD3F1A 10%, #000000 20%);height: 100%;width: 100%;border: none;position: static;display: inline-block;background-image: url('../img/help.png');background-size: 35px;background-repeat: no-repeat;background-position: 50% 7px;/*   * Licensed to the Apache Software Foundation (ASF) under one   * or more contributor license agreements.  See the NOTICE file   * distributed with this work for additional information   * regarding copyright ownership.  The ASF licenses this file   * to you under the Apache License, Version 2.0 (the   * "License"); you may not use this file except in compliance   * with the License.  You may obtain a copy of the License at   *   * http: //www.apache.org/licenses/LICENSE-2.0   *   * Unless required by applicable law or agreed to in writing,   * software distributed under the License is distributed on an   * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY   * KIND, either express or implied.  See the License for the   * specific language governing permissions and limitations   * under the License.   */  * {0) */ /* make transparent link selection, adjust last value opacity 0 to 1.0 */  }body {      -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */-webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */-webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */width: 100%;height: 100%;margin-left: auto;margin-right: auto;overflow: hidden;background-color: #AD3F1A;  }    /* Portrait layout (default) */  .app {position:absolute;             /* position in the center of the screen */height: 95%;width:100%;                   /* text area width */overflow: hidden;top:60px;overflow-y: hidden;        /* offset vertical: half of image height and text area height */                                     /* offset horizontal: half of text area width */margin-left: auto;margin-right: auto;background-color: #AD3F1A;overflow: -moz-scrollbars-vertical;overflow-x: hidden;overflow-y: hidden;  }    /* Landscape layout (with min-width) */  @media screen and (min-aspect-ratio: 1/1) and (min-width:400px) {      .app {   /* offset vertical: half of image height */                                        /* offset horizontal: half of image width and text area width */;}  }    .classResults {overflow-y: scroll;overflow-x: hidden;background-color: #46580E;width: 90%;height: 85%;margin: 0,auto;border-radius: 8px;margin-left: auto;margin-right: auto;-moz-box-shadow:    inset 0 0 10px #000000;  }    .classes {width: 100%;height:50px;list-style-type:none;display: inline-block;text-align: left;}  .classesItem {background-color: rgba(38,51,0,.5);font-size: 20px;color: white;width:100%;height: 100%;margin-left: -40px;display: inline-block;text-align: center;  }    .deleteItem{background-color: rgba(255,0,0,.5);right: 10%;width: 15%;height: 100%;font-size: 30px;vertical-align: middle;color: white;text-align: center;display: inline-block;margin-left: 10px;  }    .event {border-radius:4px;-webkit-border-radius:4px;color:#FFFFFF;font-size:12px;margin:0px 30px;padding:2px 0px;  }    .event.listening {background-color:#333333;display:block;  }    .event.received {background-color:#4B946A;display:none;  }    @keyframes fade {      from {opacity: 1.0; }      50% {opacity: 0.4; }      to {opacity: 1.0; }  }    @-webkit-keyframes fade {      from {opacity: 1.0; }      50% {opacity: 0.4; }      to {opacity: 1.0; }  }    .BottomBar {width: 100%;position: fixed;bottom: 0%;left: 0;right: 0;height: 50px;background-color: #AD3F1A;display: inline-block;margin-left: auto;margin-right: auto;box-shadow: 0 0 10px #000000;background-blend-mode: overlay;  }    .leftSide{width:50%;height: 100%;position: fixed;display: inline-block;left: 0;background-color: #AD3F1A;  }    .rightSide{width:50%;height: 100%;position: fixed;display: inline-block;right: 0;background-color: #AD3F1A;  }    .cameraButtonDiv{width: 50%;height:100%;position: relative;display: inline-block;margin-right: -4px;background-color: #AD3F1A;  }  .cameraButton {background-color: #f4f4f4;cursor:pointer;height: 100%;width: 100%;border: none;position: static;display: inline-block;background-image: url('../img/camera.png');background-size: 60px;background-repeat: no-repeat;background-position: 50% -5px;mix-blend-mode: darken;}    .photoButtonDiv{width: 50%;height:100%;display: inline-block;position: relative;margin-left: auto;margin-right: auto;background-color: #AD3F1A;  }  .photoButton {background-color: #f4f4f4;cursor:pointer;height: 100%;width: 100%;border: none;position: static;display: inline-block;background-image: url('../img/photo.png');background-size: 50px;background-repeat: no-repeat;background-position: 50% 2px;mix-blend-mode: darken;}  .helpButtonDiv{width: 50%;height:100%;position: static;display: inline-block;left: 0;margin-right: -4px;background-color: #AD3F1A;  }  .helpButton {background-color: #f4f4f4;cursor:pointer;height: 100%;width: 100%;border: none;position: static;display: inline-block;background-image: url('../img/help.png');background-size: 40px;background-repeat: no-repeat;background-position: 50% 5px;mix-blend-mode: darken;}  .settingsButtonDiv{width: 50%;height:100%;position: relative;display: inline-block;padding: 0;border: none;background-color: #AD3F1A;    }  .settingsButton {background-color: #f4f4f4;cursor:pointer;height: 100%;width: 100%;border: none;position: static;display: inline-block;background-image: url('../img/settings.png');background-size: 40px;background-repeat: no-repeat;background-position: 50% 5px;mix-blend-mode: darken;}    .topBar {width: 100%;top: 0%;left: 0;right: 0;height: 50px;background-color: white;display: inline-block;margin-left: auto;margin-right: auto;position: relative;text-align: center;vertical-align: middle;background-color: #AD3F1A;  }    .title {font-size:24px;font-weight:normal;text-align:center;vertical-align: middle;line-height: 30px;width: 70%;height: 100%;display: inline-block;left: 0%;top: 0%;position: absolute;color: white;  }  .deleteAll {width: 28%;height:100%;position: absolute;display: inline-block;position: absolute;right: 0px;  }    .deleteButton {background-color: #AD3F1A;vertical-align: middle;border: none;position: relative;color: white;font-size: 20px;}filter: invert(0%);filter: invert(100%);}
+.settingsButtonDiv{
+    width: 50%;
+    height:100%;
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    border: none;
+    background: -webkit-linear-gradient(top, #AD3F1A 0%, #6c2811 10%);
+  }
+.settingsButton {background: -webkit-linear-gradient(top, #AD3F1A 0%, #6c2811 10%);cursor:pointer;height: 100%;width: 100%;border: none;position: static;display: inline-block;background-image: url('../img/settings.png');background-size: 35px;background-repeat: no-repeat;background-position: 50% 8px;filter: invert(100%);/* background: -webkit-linear-gradient(top, #AD3F1A 0%, #6c2811 10%); */}
+
+.topBar {
+    width: 100%;
+    position: fixed;
+    top: 0%;
+    left: 0;
+    right: 0;
+    height: 50px;
+    display: inline-block;
+    box-shadow: 0 0 10px #000000;
+    background: -webkit-linear-gradient(top, #AD3F1A 20%, #000000 200%);
+}
+
+.title {
+    font-size:24px;
+    line-height: 30px;
+    width: 70%;
+    height: 100%;
+    display: inline-block;
+    color: white;
+    margin-left: 21px;
+    margin-top: 15px;
+    vertical-align: middle;
+}
+.deleteAll {
+    width: 28%;
+    height:100%;
+    position: absolute;
+    display: inline-block;
+    right: 0%;
+    margin-top: 22px;
+}
+
+.deleteButton {vertical-align: middle;border: none;position: relative;color: white;font-size: 16px;background: rgba(0,0,0,0);}
+
+@mixin position-center($text-align: center) {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align: $text-align;
+}
+
+.screen {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  background-color: #2a3508;
+  display: inline-block;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7), 0 0 8px rgba(255, 255, 255, 0.1), 0 -1px 30px rgba(0, 0, 0, .4), inset 0 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.loader {
+  height: 15px;
+  text-align: center;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: absolute;
+}
+
+.dot {
+  position: relative;
+  width: 15px;
+  height: 15px;
+  margin: 0 2px;
+  display: inline-block;
+}
+
+.dot:first-child:before {
+  animation-delay: 0ms;
+}
+
+.dot:first-child:after {
+  animation-delay: 0ms;
+}
+
+.dot:last-child:before {
+  animation-delay: 200ms;
+}
+
+.dot:last-child:after {
+  animation-delay: 200ms;
+}
+
+.dot:before{
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  background-color: blue;
+  animation-name: dotHover;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(.82,0,.26,1);
+  animation-iteration-count: infinite;
+  animation-delay: 100ms;
+  background: white;
+  border-radius: 100%;  
+}
+
+.dot:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  background: black;
+  box-shadow: 0px 0px 1px black;
+  opacity: .20;
+  width: 100%;
+  height: 3px;
+  left: 0;
+  bottom: -2px;
+  border-radius: 100%;
+  animation-name: dotShadow;
+  animation-duration: 900ms;
+  animation-timing-function: cubic-bezier(.82,0,.26,1);
+  animation-iteration-count: infinite;
+  animation-delay: 100ms;
+}
+
+@keyframes dotShadow {
+  0% {
+    transform: scaleX(1);
+  }
+  50% {
+    opacity: 0;
+    transform: scaleX(.6);
+  }
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+@keyframes dotHover {
+  0% {
+    top: 0px;
+  }
+  50% {
+    top: -50px;
+    transform: scale(1.1);
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.loading {
+  color: white;
+  width: 70%;
+  height: 10%;
+  font-size:large;
+  position:absolute;
+  padding-top:70px;
+  vertical-align:middle;
+  text-align:center;
+  left:0;
+  right:0;
+  top:0;
+  bottom:0;
+  margin:auto;
+}
+
+.classNamesList {
+  width: 100%;
+  height: 50%;
+  margin: auto;
+  background-color: #2a3508;
+  display: inline-block;
+  border-radius: 8px;
+  bottom:0;
+  top: 0;
+  margin: auto;
+  position: absolute;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7), 0 0 8px rgba(255, 255, 255, 0.1), 0 -1px 30px rgba(0, 0, 0, .4), inset 0 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.classCopy {height: 100%;
+    width: 30%;
+    position: relative;
+    display: inline-block;
+
+}
+
+.classOK {
+    width: 68%;
+    height: 100%;
+    display: inline-block;
+    position: relative;
+}
+
+.namesBottomBar {
+  width: 100%;
+  height: 40px;
+  background: -webkit-linear-gradient(top, #AD3F1A 0%, #6c2811 100%);
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7), 0 0 8px rgba(255, 255, 255, 0.1), 0 -1px 30px rgba(0, 0, 0, .4), inset 0 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+
+.okClose {
+    border: none;
+    position: absolute;
+    color: white;
+    font-size: 16px;
+    background: rgba(0,0,0,0);
+    height: 100%;
+    width: 100%;
+}
+
+.settings {
+  width: 100%;
+  height: 50%;
+  margin: auto;
+  background-color: #2a3508;
+  display: inline-block;
+  border-radius: 8px;
+      bottom:0;
+  top: 0;
+    margin: auto;
+    position: absolute;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.7), 0 2px 2px rgba(0, 0, 0, 0.7), 0 0 8px rgba(255, 255, 255, 0.1), 0 -1px 30px rgba(0, 0, 0, .4), inset 0 1px 1px 0px rgba(255, 255, 255, 0.5);
+}
+.googlesign {
+    height: 30%;
+    width: 100%;
+    border: none;
+    position: static;
+    display: inline-block;
+}
+.googleSignPic {
+background: -webkit-linear-gradient(top, #AD3F1A 10%, #000000 20%);
+    height: 100%;
+    width: 100%;
+    border: none;
+    display: inline-block;
+    background-image: url('../img/google.png');
+    background-size: 100%;
+    background-repeat: no-repeat;
+
+}
+
+.invisible{
+    width: 100%;
+    height: 100%;
+    background-image: url('../img/copy.png');
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 50% 8px;
+    filter: invert(100%);
+
+}
