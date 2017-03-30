@@ -3,7 +3,7 @@ function googlelogin() {
     window.plugins.GooglePlus.login({
             'scopes': 'https://www.googleapis.com/auth/drive.file profile',
             'offline': true,
-            'webApiKey': 'com.googleusercontent.apps.1012993333156-4h9c7j4jkd5931j602teq01d0kejtoss'
+            'webApiKey': 'com.googleusercontent.apps.'
         },
         function (obj) {
             $scope.$apply(function () {
@@ -13,8 +13,8 @@ function googlelogin() {
 
 
             var data = $.param({
-                client_id: 'com.googleusercontent.apps.1012993333156-4h9c7j4jkd5931j602teq01d0kejtoss',
-                client_secret: '1012993333156-4h9c7j4jkd5931j602teq01d0kejtoss.apps.googleusercontent.com',
+                client_id: '',
+                client_secret: '',
                 grant_type: 'authorization_code',
                 code: obj.serverAuthCode
             });
